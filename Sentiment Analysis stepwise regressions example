@@ -1,0 +1,151 @@
+clear
+
+cd "/Users/francescocorea/Documents/Research/Option Sentiment"
+***Apple
+
+use "/Users/francescocorea/Documents/Research/Option Sentiment/RawData/AppleData"
+
+tsset Serial
+
+gen lPD=L.PD
+gen lP=L.Call
+gen lSM=L.SM 
+gen lSR=L.SR
+gen lBBSp=L.BBSp 
+gen lBBSn=L.BBSn
+gen lBBSR=L.BBSR  
+gen lKlout=L.Klout
+gen lSMMA= L.SMMA
+
+stepwise, pr(0.1) pe(0.05): reg Call lP lSM lSR lBBSp lBBSn lBBSR lKlout lSMMA, nocons
+eststo A
+
+esttab A  using stepwise1.tex, aic bic r2 replace mtitle("Price") star(* 0.1 ** 0.01 *** 0.001) nonumber nocons coef(lP "Price" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
+
+
+***Apple Trend
+
+clear
+
+use "/Users/francescocorea/Documents/Research/Option Sentiment/RawData/AppleData"
+
+tsset Serial
+
+gen lPD=L.PD
+gen lP=L.Call
+gen lSM=L.SM 
+gen lSR=L.SR
+gen lBBSp=L.BBSp 
+gen lBBSn=L.BBSn
+gen lBBSR=L.BBSR  
+gen lKlout=L.Klout
+gen lSMMA= L.SMMA
+
+stepwise, pr(0.1) pe(0.05): reg PD lPD lSM lSR lBBSp lBBSn lBBSR lKlout lSMMA, nocons
+eststo B
+
+esttab B  using stepwise2.tex, aic bic r2 replace mtitle("Trend") star(* 0.1 ** 0.01 *** 0.001) nonumber nocons coef(lPD "Trend" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
+
+
+***Facebook
+
+clear
+
+use "/Users/francescocorea/Documents/Research/Option Sentiment/RawData/FBData"
+
+tsset Serial
+
+gen lPD=L.PD
+gen lP=L.Call
+gen lSM=L.SM 
+gen lSR=L.SR
+gen lBBSp=L.BBSp 
+gen lBBSn=L.BBSn
+gen lBBSR=L.BBSR  
+gen lKlout=L.Klout
+gen lSMMA= L.SMMA
+
+stepwise, pr(0.1) pe(0.05): reg Price lP lSM lSR lBBSp lBBSn lBBSR lKlout lSMMA, nocons
+eststo C
+
+esttab C  using stepwise3.tex, aic bic r2 replace mtitle("Price") star(* 0.1 ** 0.01 *** 0.001) nonumber nocons coef(lP "Price" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
+
+
+***Facebook Trend
+
+clear
+
+use "/Users/francescocorea/Documents/Research/Option Sentiment/RawData/FBData"
+
+tsset Serial
+
+gen lPD=L.PD
+gen lP=L.Call
+gen lSM=L.SM 
+gen lSR=L.SR
+gen lBBSp=L.BBSp 
+gen lBBSn=L.BBSn
+gen lBBSR=L.BBSR  
+gen lKlout=L.Klout
+gen lSMMA= L.SMMA
+
+stepwise, pr(0.1) pe(0.05): reg PD lPD lSM lSR lBBSp lBBSn lBBSR lKlout lSMMA, nocons
+eststo D
+
+esttab D  using stepwise4.tex, aic bic r2 replace mtitle("Trend") star(* 0.1 ** 0.01 *** 0.001) nonumber nocons coef(lPD "Trend" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
+
+
+***Google
+
+clear
+
+use "/Users/francescocorea/Documents/Research/Option Sentiment/RawData/GoogleData"
+
+tsset Serial
+
+gen lPD=L.PD
+gen lP=L.Call
+gen lSM=L.SM 
+gen lSR=L.SR
+gen lBBSp=L.BBSp 
+gen lBBSn=L.BBSn
+gen lBBSR=L.BBSR  
+gen lKlout=L.Klout
+gen lSMMA= L.SMMA
+
+stepwise, pr(0.1) pe(0.05): reg Price lP lSM lSR lBBSp lBBSn lBBSR lKlout lSMMA, nocons
+eststo E
+
+esttab E using stepwise5.tex, aic bic r2 replace mtitle("Price") star(* 0.1 ** 0.01 *** 0.001) nonumber nocons coef(lP "Price" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
+
+
+***Google Trend
+
+clear
+
+use "/Users/francescocorea/Documents/Research/Option Sentiment/RawData/GoogleData"
+
+tsset Serial
+
+gen lPD=L.PD
+gen lP=L.Call
+gen lSM=L.SM 
+gen lSR=L.SR
+gen lBBSp=L.BBSp 
+gen lBBSn=L.BBSn
+gen lBBSR=L.BBSR  
+gen lKlout=L.Klout
+gen lSMMA= L.SMMA
+
+stepwise, pr(0.1) pe(0.05): reg PD lPD lSM lSR lBBSp lBBSn lBBSR lKlout lSMMA, nocons
+eststo F
+
+esttab F  using stepwise6.tex, aic bic r2 replace mtitle("Trend") star(* 0.1 ** 0.01 *** 0.001) nonumber nocons coef(lPD "Trend" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
+
+
+esttab A C E using stepwisehft1.tex, r2 replace mgroups("Apple" "Facebook" "Google", pattern(1  1  1 ))  mtitle("Price" "Price" "Price") star(* 0.1 ** 0.01 *** 0.001) nonumber noobs nocons coef(lP "Price" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
+
+
+esttab B D F using stepwisehft2.tex, r2 replace mgroups("Apple" "Facebook" "Google", pattern(1  1  1 ))  mtitle("Trend" "Trend" "Trend") star(* 0.1 ** 0.01 *** 0.001) nonumber noobs nocons coef(lPD "Trend" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
+
+esttab A B C D E F using stepwisehfttot.csv, r2 replace mgroups("Apple" "Facebook" "Google", pattern(1 0 1 0 1 0)) mtitle("Price" "Trend" "Price" "Trend" "Price" "Trend") star(* 0.1 ** 0.01 *** 0.001) nonumber noobs nocons coef(lP "Price" lSM "SM" lSR "SR" lBBSp "BBSp" lBBSn "BBSn" lBBSR "BBSR" lKlout "Klout" lSMMA "SMMA")
