@@ -1,0 +1,18 @@
+clear
+
+cd "/Users/francescocorea/Documents/PhD/Sentiment" 
+
+
+use "/Users/francescocorea/Documents/PhD/Sentiment/dati/Apple.dta"
+
+tsset Time
+rolling _b, saving(rolling1,replace) window (10): reg Price L.Price L.VR L.SentimentVolatility L.BBVR L.BBSp L.BBSR 
+
+use "/Users/francescocorea/Documents/PhD/Sentiment/rolling1.dta"
+ 
+line _stat_1 start || line _stat_2 start || line _stat_3 start || line _stat_4 start || line _stat_5 start || line _stat_6 start, ytitle("Betas") xtitle("Time") legend(label(1 "Price") label(2 "VR") label(3 "SV") label(4 "BBVR") label(5 "BBSp") label(6 "BBSR"))
+
+graph export "Rolling1.eps", as(eps) replace
+
+
+
